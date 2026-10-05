@@ -1,0 +1,15 @@
+data/demo-state.json
+
+# Local and generated files
+.agents/
+node_modules/
+*.log
+*.tmp
+.env
+.env.*
+!.env.example
+
+# OS/editor metadata
+.DS_Store
+Thumbs.db
+.vscode/

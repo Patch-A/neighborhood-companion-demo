@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 420" role="img" aria-labelledby="title desc">
+  <title id="title">社区里两位老人散步</title>
+  <desc id="desc">低饱和暖色的社区花园插画</desc>
+  <defs><linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#f4f8f1"/><stop offset="1" stop-color="#e4f0e2"/></linearGradient></defs>
+  <rect width="760" height="420" rx="34" fill="url(#sky)"/><circle cx="620" cy="86" r="38" fill="#f2c26b" opacity=".9"/>
+  <path d="M0 300C130 258 208 284 310 300c122 19 247-19 450-42v162H0Z" fill="#cfe4c7"/><path d="M0 351c105-21 208-32 322-12 131 23 253-18 438-18v99H0Z" fill="#b8d49f"/>
+  <g fill="#8fae80"><circle cx="82" cy="270" r="48"/><circle cx="127" cy="255" r="62"/><circle cx="194" cy="278" r="45"/><circle cx="663" cy="264" r="55"/><circle cx="714" cy="249" r="44"/></g>
+  <g fill="#8c7459"><rect x="118" y="273" width="17" height="84" rx="8"/><rect x="676" y="273" width="15" height="79" rx="7"/></g><path d="M260 366c41-84 111-98 172-28 20 23 30 39 39 62H241c4-13 10-25 19-34Z" fill="#f4dfb9"/>
+  <g transform="translate(306 202)"><circle cx="38" cy="26" r="26" fill="#e6b184"/><path d="M12 23c6-26 50-32 57 7-9-8-13-16-24-17-10 5-18 9-33 10Z" fill="#f2f0eb"/><path d="M16 58c13-13 52-13 66 0l16 105H0Z" fill="#e59b4e"/><path d="M25 73 3 140l24 8 25-64Z" fill="#f3d7ad"/><path d="m77 74 41 66-21 11-44-62Z" fill="#f3d7ad"/><path d="M27 163h25v56H25Zm49 0h24v56H76Z" fill="#647f72"/><path d="m30 218-13 10h42l-10-10Zm49 0-8 10h43l-13-10Z" fill="#566b6d"/></g>
+  <g transform="translate(430 184)"><circle cx="36" cy="25" r="25" fill="#d9996f"/><path d="M11 23c5-29 48-33 57 5-12-6-17-15-27-15-10 6-17 9-30 10Z" fill="#d9d4c7"/><path d="M13 58c14-14 54-14 69 0l17 106H0Z" fill="#709b78"/><path d="m20 74-39 68 21 10 43-61Zm60 0 49 58-19 15-51-46Z" fill="#f0c89f"/><path d="M29 164h23v55H26Zm46 0h24v55H75Z" fill="#d78355"/><path d="m31 218-15 10h43l-8-10Zm47 0-9 10h44l-12-10Z" fill="#566b6d"/></g>
+  <path d="M378 263c34 19 56 19 85 0" fill="none" stroke="#6a8e6d" stroke-width="5" stroke-linecap="round"/><g fill="#efb26c"><circle cx="246" cy="343" r="7"/><circle cx="236" cy="357" r="5"/><circle cx="554" cy="337" r="6"/></g>
+</svg>

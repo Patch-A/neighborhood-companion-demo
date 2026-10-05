@@ -1,0 +1,10 @@
+{
+  "name": "neighborhood-companion-demo",
+  "version": "0.1.0",
+  "license": "MIT",
+  "description": "邻里有伴全栈功能版演示",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  }
+}
