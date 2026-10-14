@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import CareApp from "@/components/care-app";
+import AppSurface from "@/components/app-surface";
+import "./family.css";
 
 export const metadata: Metadata = {
-  title: "邻里有伴 · 温暖日常",
-  description: "看社区活动、准备家人文字卡、记录平安，让日常多一点陪伴。",
+  title: "�����а� �� �ͼ��˻�����ʽ˵��",
+  description: "��Ϥ��Ƭ��̶�ͼ�����������˴������⡢���ջ�Ӧ��",
   robots: { index: false, follow: false },
   icons: {
     icon: "/favicon.svg",
@@ -19,7 +20,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="zh-CN">
-      <body className="antialiased"><CareApp /></body>
+      <body className="antialiased"><AppSurface /></body>
     </html>
   );
 }
