@@ -60,8 +60,8 @@ for (const route of ['/', '/requests', '/contacts', '/records', '/settings']) {
     pathname = route;
     hookIndex = 0;
     const html = renderToString(React.createElement(CareApp));
-    assert.ok(html.includes(route === '/contacts' ? '����Э�����õ绰' : '���ڴ���ļ�¼��'));
-    assert.ok(html.includes('�򿪼�¼'));
+    assert.ok(html.includes(route === '/contacts' ? '家人协助设置电话' : '正在打开你的记录…'));
+    assert.ok(html.includes('打开记录'));
     assert.ok(!html.includes('<i></i>'), 'do not invent a notification before data loads');
   });
 }
@@ -75,13 +75,13 @@ for (const role of ['elder', 'family', 'volunteer']) {
       hookIndex = 0;
       pathname = route;
       const html = renderToString(React.createElement(CareApp));
-      assert.ok(html.includes('��֪ͨ��ʵ���˻��幤'));
+      assert.ok(html.includes('不通知真实家人或义工'));
       if (route === '/' && role === 'elder') {
-        assert.ok(html.includes('���ü��˵绰'));
-        assert.ok(html.includes('˵������'));
-        assert.ok(html.includes('��������'));
+        assert.ok(html.includes('设置家人电话'));
+        assert.ok(html.includes('说话求助'));
+        assert.ok(html.includes('拍照求助'));
       }
-      if (route === '/settings') assert.ok(html.includes('��ʾ��ɫ�л�'));
+      if (route === '/settings') assert.ok(html.includes('演示角色切换'));
       seededState = null;
       seededRole = 'elder';
     });

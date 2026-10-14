@@ -19,26 +19,26 @@ async function call(user,path,body,extra={}){
 const action=(user,body,extra)=>call(user,'/api/family/action',body,extra);
 async function media(user,id,headers={}){return fetch(new URL(`/api/family/media/${id}`,base),{headers:{'oai-authenticated-user-id':user,'oai-authenticated-user-email':`${user}@sites.test`,...headers},signal:AbortSignal.timeout(10000)});}
 before(async()=>{
-  for(const user of [owner,other]){const result=await action(user,{action:'create',name:'�Զ����ռ�ͥ',memberName:'���Լ���'});assert.equal(result.status,200);created.push(user);}
+  for(const user of [owner,other]){const result=await action(user,{action:'create',name:'自动验收家庭',memberName:'测试家人'});assert.equal(result.status,200);created.push(user);}
   const result=await action(owner,{action:'invite',role:'elder'});assert.equal(result.status,200);invite=result.result.token;
 });
 after(async()=>{
   for(const user of created){const result=await action(user,{action:'delete-household'});assert.equal(result.status,200,'Synthetic test household cleanup');}
 });
 test('anonymous mutation rejected; cross-origin mutation rejected',async()=>{
-  assert.equal((await action(null,{action:'create',name:'������',memberName:'δ֪'})).status,401);
+  assert.equal((await action(null,{action:'create',name:'无身份',memberName:'未知'})).status,401);
   assert.equal((await action(owner,{action:'review-cards',reviewed:true},{Origin:'https://untrusted.example'})).status,403);
 });
 test('invite binds stored elder role; client actor cannot elevate it',async()=>{
-  const joined=await action(elder,{action:'join',token:invite,name:'��������',role:'family',actor:'family'});assert.equal(joined.status,200);
+  const joined=await action(elder,{action:'join',token:invite,name:'测试老人',role:'family',actor:'family'});assert.equal(joined.status,200);
   const snapshot=await call(elder,'/api/family');assert.equal(snapshot.result.members.find(m=>m.userId===elder).role,'elder');
   assert.equal((await action(elder,{action:'invite',role:'family',actor:'family'})).status,403);
   assert.equal((await action(elder,{action:'review-cards',reviewed:true,actor:'family'})).status,403);
   assert.equal((await action(elder,{action:'delete-household',actor:'family'})).status,403);
 });
 test('invitation cannot be reused or invented',async()=>{
-  assert.equal((await action(outsider,{action:'join',token:invite,name:'��һ������'})).status,410);
-  assert.equal((await action(outsider,{action:'join',token:'not-a-real-token',name:'��һ������'})).status,410);
+  assert.equal((await action(outsider,{action:'join',token:invite,name:'另一测试者'})).status,410);
+  assert.equal((await action(outsider,{action:'join',token:'not-a-real-token',name:'另一测试者'})).status,410);
 });
 test('elder sends only after familiarizing cards; foreign recipient rejected',async()=>{
   assert.equal((await action(elder,{action:'send',cards:['hello'],text:'',mediaIds:[],clientId:randomUUID(),recipientId:owner})).status,409);
@@ -54,7 +54,7 @@ test('real R2 attachment staged private; forged image signature rejected',async(
   const forged=await fetch(new URL('/api/family/media',base),{method:'POST',headers:{'oai-authenticated-user-id':owner,'oai-authenticated-user-email':`${owner}@sites.test`,'Content-Type':'image/png'},body:'<script>bad file</script>'});assert.equal(forged.status,415);
 });
 test('send and concurrent retries produce one message; snapshot does not invent receipt',async()=>{
-  const payload={action:'send',cards:['hello'],text:'��������',mediaIds:[attachment],clientId,recipientId:elder};
+  const payload={action:'send',cards:['hello'],text:'测试往返',mediaIds:[attachment],clientId,recipientId:elder};
   const responses=await Promise.all([action(owner,payload),action(owner,payload),action(owner,payload)]);
   assert.ok(responses.every(r=>r.status===200));assert.equal(new Set(responses.map(r=>r.result.id)).size,1);messageId=responses[0].result.id;
   const sender=await call(owner,'/api/family');const found=sender.result.messages.filter(m=>m.id===messageId);assert.equal(found.length,1);assert.equal(found[0].receivedAt,null);assert.equal(found[0].openedAt,null);
@@ -82,13 +82,13 @@ test('elder can send not-understood response; cannot reply to foreign conversati
 });
 test('model absent returns honest fallback, role forged cannot call model',async()=>{
   const state=await call(owner,'/api/family');assert.equal(state.result.aiAvailable,false,'No credential in test environment');
-  const absent=await call(owner,'/api/family/suggest',{text:'�����'});assert.equal(absent.status,503);assert.ok(absent.result.error.includes('��δ����'));
-  assert.equal((await call(elder,'/api/family/suggest',{text:'�����',actor:'family'})).status,403);
-  assert.equal((await call(elder,'/api/family/try-ai',{text:'�����',actor:'family'})).status,403);
-  assert.equal((await call(null,'/api/family/try-ai',{text:'�����'})).status,401);
+  const absent=await call(owner,'/api/family/suggest',{text:'想见你'});assert.equal(absent.status,503);assert.ok(absent.result.error.includes('尚未接入'));
+  assert.equal((await call(elder,'/api/family/suggest',{text:'想见你',actor:'family'})).status,403);
+  assert.equal((await call(elder,'/api/family/try-ai',{text:'想见你',actor:'family'})).status,403);
+  assert.equal((await call(null,'/api/family/try-ai',{text:'想见你'})).status,401);
 });
 test('feedback isolated to household family role',async()=>{
-  assert.equal((await action(elder,{action:'feedback',category:'û����',detail:''})).status,200);
+  assert.equal((await action(elder,{action:'feedback',category:'没看懂',detail:''})).status,200);
   assert.equal((await call(elder,'/api/family/feedback')).status,403);
   assert.equal((await call(owner,'/api/family/feedback')).result.items.length,1);
   assert.equal((await call(other,'/api/family/feedback')).result.items.length,0);
@@ -102,7 +102,7 @@ test('only sender can withdraw; revoked attachment inaccessible even to sender',
 test('invitation revocation prevents joining',async()=>{
   const token=(await action(owner,{action:'invite',role:'family'})).result.token;
   assert.equal((await action(owner,{action:'revoke-invites'})).status,200);
-  assert.equal((await action(outsider,{action:'join',token,name:'��һ������'})).status,410);
+  assert.equal((await action(outsider,{action:'join',token,name:'另一测试者'})).status,410);
 });
 test('early rejections do not break the following request',async()=>{
   assert.equal((await action(owner,{action:'review-cards',reviewed:true},{'Content-Type':'text/plain'})).status,415);

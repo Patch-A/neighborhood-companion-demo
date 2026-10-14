@@ -11,7 +11,7 @@ export async function GET(request:Request,{params}:{params:Promise<{id:string}>}
     requested={offset:start,length:end-start+1};
   }
   const object=await bucket().get(`${ctx.householdId}/${id}`,requested?{range:requested}:undefined);
-  if(!object)throw new FamilyError('�������Ƴ������ü������·��͡�',404);
+  if(!object)throw new FamilyError('附件已移除，请让家人重新发送。',404);
   const headers=new Headers({'Content-Type':file.mime,'Cache-Control':'private, no-store','X-Content-Type-Options':'nosniff','Accept-Ranges':'bytes','Content-Length':String(requested?.length??file.bytes)});
   if(requested)headers.set('Content-Range',`bytes ${requested.offset}-${requested.offset+requested.length-1}/${file.bytes}`);
   return new Response(object.body,{status:requested?206:200,headers});

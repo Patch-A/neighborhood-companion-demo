@@ -7,13 +7,13 @@ import {requestCardSuggestion} from '@/lib/family-ai';
 export async function POST(request:Request){try{
   const data=await jsonBody(request);const userId=await identity();
   const db=database();const membership=await db.prepare('SELECT role FROM family_members WHERE user_id=?').bind(userId).first<{role:string}>();
-  if(membership?.role==='elder')throw new FamilyError('���ü��˼�� AI ͼ�����顣',403);
+  if(membership?.role==='elder')throw new FamilyError('请让家人检查 AI 图卡建议。',403);
   const text=cleanText(data.text,500,true);
-  if(!env.FAMILY_AI_API_KEY||!env.FAMILY_AI_BASE_URL||!env.FAMILY_AI_MODEL)throw new FamilyError('AI ������δ���룬������ѡͼ����',503);
+  if(!env.FAMILY_AI_API_KEY||!env.FAMILY_AI_BASE_URL||!env.FAMILY_AI_MODEL)throw new FamilyError('AI 服务尚未接入，请先手选图卡。',503);
   const day=new Date().toISOString().slice(0,10);
   for(const [scope,limit] of [[`global:${day}`,200],[`preview:${await hashToken(userId)}:${day}`,5]] as const){
     const result=await db.prepare(`INSERT INTO family_ai_usage(scope,count) VALUES(?,1) ON CONFLICT(scope) DO UPDATE SET count=count+1 WHERE count<?`).bind(scope,limit).run();
-    if(!result.meta.changes)throw new FamilyError('��������ô����ѵ����ޣ������ֶ�ѡͼ����',429);
+    if(!result.meta.changes)throw new FamilyError('今天的试用次数已到上限，可以手动选图卡。',429);
   }
   await db.prepare('DELETE FROM family_ai_usage WHERE substr(scope,-10)<?').bind(new Date(Date.now()-7*86400000).toISOString().slice(0,10)).run();
   const cards=await requestCardSuggestion({baseUrl:env.FAMILY_AI_BASE_URL,apiKey:env.FAMILY_AI_API_KEY,model:env.FAMILY_AI_MODEL},text);

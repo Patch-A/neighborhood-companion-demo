@@ -12,7 +12,7 @@ function load(name){const filename=fileURLToPath(new URL(`../lib/${name}.ts`,imp
 if(!process.env.DEEPSEEK_API_KEY)throw new Error('DeepSeek credential is not configured in this process.');
 const {requestCardSuggestion}=load('family-ai');
 const config={baseUrl:'https://api.deepseek.com',apiKey:process.env.DEEPSEEK_API_KEY,model:'deepseek-flash'};
-const result=await requestCardSuggestion(config,'���뿴�����˵���Ƭ');
+const result=await requestCardSuggestion(config,'我想看看家人的照片');
 assert.ok(result.includes('photo'));console.log(JSON.stringify({case:'synthetic-photo-request',model:config.model,cards:Array.from(result),passed:true}));
-await assert.rejects(()=>requestCardSuggestion(config,'�����֧��ҽҩ����'),/����������ͼ������/);
+await assert.rejects(()=>requestCardSuggestion(config,'请帮我支付医药费用'),/不能用已有图卡表达/);
 console.log(JSON.stringify({case:'unsupported-sensitive-intent',passed:true,behavior:'manual-fallback'}));

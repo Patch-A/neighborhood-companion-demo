@@ -3,11 +3,11 @@ import {getChatGPTUser} from '@/app/chatgpt-auth';
 import {FamilyError,RETENTION_DAYS,MAX_MEDIA_BYTES,type FamilyRole,type FamilyMessage,type FamilyMember,type FamilySnapshot} from './picture-cards';
 
 export function database(): D1Database {
-  if (!env.DB) throw new FamilyError('��ͥ��¼������ʱ�����ã����Ժ����ԡ�',503);
+  if (!env.DB) throw new FamilyError('家庭记录服务暂时不可用，请稍后重试。',503);
   return env.DB;
 }
 export function bucket(): R2Bucket {
-  if (!env.BUCKET) throw new FamilyError('��Ƭ������������δ����������ʹ��ͼ����',503);
+  if (!env.BUCKET) throw new FamilyError('照片与语音服务尚未就绪，请先使用图卡。',503);
   return env.BUCKET;
 }
 export function okay(data: unknown, status = 200) {
@@ -21,11 +21,11 @@ export async function failed(error: unknown,request?:Request) {
       if(discarded>MAX_MEDIA_BYTES){void reader.cancel().catch(()=>{});break;}}}catch{}finally{reader.releaseLock();}}
   // Never log raw user input, recording, model response or credentials.
   if (!(error instanceof FamilyError)) console.error('Family operation failed',error instanceof Error?{name:error.name,frames:error.stack?.split('\n').slice(1,4)}:{name:'UnknownError'});
-  return okay({error: error instanceof FamilyError ? error.message : '��ʱû����ɣ������ԡ�'},error instanceof FamilyError ? error.status : 503);
+  return okay({error: error instanceof FamilyError ? error.message : '暂时没有完成，请重试。'},error instanceof FamilyError ? error.status : 503);
 }
 export async function identity() {
   const user = await getChatGPTUser();
-  if (!user) throw new FamilyError('���ȵ�¼�������û�����ͥ��',401);
+  if (!user) throw new FamilyError('请先登录，再设置或加入家庭。',401);
   return user.userId;
 }
 export type Context = {userId: string; householdId: string; ownerId: string; role: FamilyRole; cardsReviewed: boolean; state: string};
@@ -34,15 +34,15 @@ export async function context(allowDeleting = false): Promise<Context> {
   const row = await database().prepare(`SELECT m.household_id,m.role,h.owner_id,h.cards_reviewed,h.state
     FROM family_members m JOIN family_households h ON h.id=m.household_id WHERE m.user_id=?`).bind(userId)
     .first<{household_id: string; role: FamilyRole; owner_id: string; cards_reviewed: number; state: string}>();
-  if (!row) throw new FamilyError('�����ü������ã������������Ӽ����ͥ��',403);
-  if (row.state !== 'active' && !allowDeleting) throw new FamilyError('��ͥ�������������������ü�ͥ�ļ�������ɾ����',409);
+  if (!row) throw new FamilyError('请先让家人设置，或用邀请链接加入家庭。',403);
+  if (row.state !== 'active' && !allowDeleting) throw new FamilyError('家庭资料正在清理，请设置家庭的家人重试删除。',409);
   return {userId,householdId:row.household_id,role:row.role,ownerId:row.owner_id,cardsReviewed:!!row.cards_reviewed,state:row.state};
 }
 export function familyOnly(ctx: Context) {
-  if (ctx.role !== 'family') throw new FamilyError('���ü������������á�',403);
+  if (ctx.role !== 'family') throw new FamilyError('请让家人完成这个设置。',403);
 }
 export function ownerOnly(ctx: Context) {
-  if (ctx.userId !== ctx.ownerId) throw new FamilyError('ֻ�����������ͥ�ļ�������ɴ˲�����',403);
+  if (ctx.userId !== ctx.ownerId) throw new FamilyError('只有设置这个家庭的家人能完成此操作。',403);
 }
 export async function hashToken(value: string) {
   const bytes = await crypto.subtle.digest('SHA-256',new TextEncoder().encode(value));
@@ -74,12 +74,12 @@ type MessageRow = {
 };
 export async function snapshot(): Promise<FamilySnapshot> {
   const user=await getChatGPTUser();
-  const base: FamilySnapshot={viewer:user?{userId:user.userId}:null,household:null,members:[],messages:[],aiAvailable:!!(env.FAMILY_AI_API_KEY&&env.FAMILY_AI_BASE_URL&&env.FAMILY_AI_MODEL),aiProvider:env.FAMILY_AI_BASE_URL?.startsWith('https://api.deepseek.com')?'DeepSeek':'���õ�ģ�ͷ���',retentionDays:RETENTION_DAYS};
+  const base: FamilySnapshot={viewer:user?{userId:user.userId}:null,household:null,members:[],messages:[],aiAvailable:!!(env.FAMILY_AI_API_KEY&&env.FAMILY_AI_BASE_URL&&env.FAMILY_AI_MODEL),aiProvider:env.FAMILY_AI_BASE_URL?.startsWith('https://api.deepseek.com')?'DeepSeek':'配置的模型服务',retentionDays:RETENTION_DAYS};
   if (!user) return base;
   const row=await database().prepare(`SELECT h.* FROM family_members m JOIN family_households h ON h.id=m.household_id WHERE m.user_id=?`)
     .bind(user.userId).first<{id:string;name:string;owner_id:string;cards_reviewed:number;state:string}>();
   if (!row) return base;
-  if (row.state !== 'active') throw new FamilyError('��ͥ�������������������ü�ͥ�ļ�������ɾ����',409);
+  if (row.state !== 'active') throw new FamilyError('家庭资料正在清理，请设置家庭的家人重试删除。',409);
   await cleanup(row.id);
   const members=await database().prepare('SELECT user_id,name,role,avatar_id FROM family_members WHERE household_id=? ORDER BY role,name')
     .bind(row.id).all<{user_id:string;name:string;role:FamilyRole;avatar_id:string|null}>();
@@ -100,13 +100,13 @@ export async function snapshot(): Promise<FamilySnapshot> {
 export async function canReadMedia(ctx: Context,id: string) {
   const item=await database().prepare("SELECT * FROM family_media WHERE id=? AND household_id=? AND state!='deleting'")
     .bind(id,ctx.householdId).first<{id:string;owner_id:string;kind:'image'|'audio';mime:string;bytes:number;state:string;created_at:string}>();
-  if (!item) throw new FamilyError('�����Ƭ���������Ƴ�������û�з���Ȩ�ޡ�',404);
+  if (!item) throw new FamilyError('这份照片或语音已移除，或你没有访问权限。',404);
   if (item.state==='avatar') return item;
   const lifetime=item.state==='staged'?86400000:RETENTION_DAYS*86400000;
-  if (Date.now()-Date.parse(item.created_at)>lifetime) throw new FamilyError('�������������ѹ��������·��͡�',410);
+  if (Date.now()-Date.parse(item.created_at)>lifetime) throw new FamilyError('附件保存期限已过，请重新发送。',410);
   if (item.owner_id===ctx.userId) return item;
   const rows=await database().prepare(`SELECT media_ids FROM family_messages WHERE household_id=? AND withdrawn_at IS NULL AND (sender_id=? OR recipient_id=?)`)
     .bind(ctx.householdId,ctx.userId,ctx.userId).all<{media_ids:string}>();
-  if (!rows.results.some(r=>(JSON.parse(r.media_ids) as string[]).includes(id))) throw new FamilyError('��û�з�����ݸ�����Ȩ�ޡ�',404);
+  if (!rows.results.some(r=>(JSON.parse(r.media_ids) as string[]).includes(id))) throw new FamilyError('你没有访问这份附件的权限。',404);
   return item;
 }
