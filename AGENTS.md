@@ -1,5 +1,7 @@
 # 项目开发约定
 
+- 2026-10-20用户限定暂时免费部署，已自行注册Cloudflare。新增 `online-demo/` 作为独立投稿H5的Workers Free + D1 Free适配；只使用免费托管，不购买/升级套餐或域名。原Sites标识和访问不变。账号授权、实际发布URL、国内可达性和线上模型需分别核验；准备代码不等于已部署。DeepSeek仍按已有模型账户计费，用户密钥不随源码分发。
+
 - 最新应用在 `site/`；先阅读 `docs/CODEX_HANDOFF.md` 和 `site/README.md`。根目录旧原型、研究、旧 ZIP 和 `comparison-source/` 是历史资料，保留用户已有修改。
 - 2026-10-20用户决定先做本地部署：独立本地H5入口在 `local-demo/`，先读其README。它是虚构家庭演示与本地DeepSeek后端，不替代 `site/` 的真实家庭实现，不修改/发布原Sites或采购云服务。
 - 当前项目总览是 `docs/PROJECT_GUIDE.md`；本轮投稿材料统一在 `submission/`，入口为其README。运行ZIP与资料合集分别命名，旧根目录ZIP仅留作历史，不能误作本轮投稿包。
