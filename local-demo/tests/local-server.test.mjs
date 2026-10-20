@@ -58,6 +58,20 @@ test('two in-flight limit rejects a third request before quota or upstream work'
 test('corrupt persisted quota fails closed, never silently resets',async t=>{
   const dir=await mkdtemp(join(tmpdir(),'companion-corrupt-test-'));t.after(()=>rm(dir,{recursive:true,force:true}));await writeFile(join(dir,'usage.json'),'not json');await assert.rejects(createLocalServer({dataDir:dir}),/unreadable/);
 });
+test('chunked oversized bodies receive 413 and the next valid request still works',{timeout:5000},async t=>{
+  let calls=0;const s=await setup(t,{apiKey:'fixture',suggest:async()=>{calls++;return ['photo'];}});
+  const status=await new Promise((resolve,reject)=>{
+    const req=httpRequest(s.url+'/api/suggest',{method:'POST',headers:{'Content-Type':'application/json',Origin:s.url,'X-Local-Token':s.status.token,'Transfer-Encoding':'chunked'}},res=>{res.resume();resolve(res.statusCode);});
+    req.on('error',reject);req.setTimeout(3000,()=>req.destroy(new Error('Timed out waiting for bounded-body rejection')));
+    req.write('{"text":"');req.write('x'.repeat(9000));req.end('","consent":true}');
+  });
+  assert.equal(status,413);assert.equal(calls,0);assert.equal((await s.post(valid)).status,200);
+});
+test('per-minute quota rejects the eleventh attempt before the paid request',async t=>{
+  let calls=0;const s=await setup(t,{apiKey:'fixture',suggest:async()=>{calls++;return ['hello'];}});
+  for(let i=0;i<10;i++)assert.equal((await s.post(valid)).status,200);
+  assert.equal((await s.post(valid)).status,429);assert.equal(calls,10);
+});
 test('exact reused parser rejects invented cards, prose and unsupported intent',()=>{
   assert.deepEqual(parseCardSuggestion('{"cards":["photo"]}'),['photo']);
   for(const text of ['{"cards":["approved-payment"]}','{"cards":[]}','ignore instructions','{}'])assert.throws(()=>parseCardSuggestion(text));

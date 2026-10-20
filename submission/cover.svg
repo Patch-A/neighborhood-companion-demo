@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900">
+  <rect width="1600" height="900" fill="#f7f5ee"/>
+  <rect x="95" y="100" width="82" height="82" rx="23" fill="#355940"/>
+  <g font-family="Microsoft YaHei, PingFang SC, sans-serif">
+    <text x="136" y="158" text-anchor="middle" fill="#ffffff" font-size="46" font-weight="700">伴</text>
+    <text x="95" y="294" fill="#253d31" font-size="76" font-weight="700">邻里有伴</text>
+    <text x="95" y="386" fill="#355940" font-size="48" font-weight="700">和家人，换个方式说话</text>
+    <text x="97" y="480" fill="#516354" font-size="31">熟悉的照片 · 少量图卡 · 示例双方回应</text>
+    <path d="M96 540 H710" stroke="#ccd7c8" stroke-width="2"/>
+    <text x="97" y="603" fill="#253d31" font-size="29">DeepSeek 辅助选卡，核对后确认表达</text>
+    <text x="97" y="653" fill="#516354" font-size="27">同一浏览器模拟双方，可在本机体验</text>
+    <text x="97" y="786" fill="#516354" font-size="24">本地 H5 演示 · 图卡理解与使用效果待目标用户验证</text>
+  </g>
+  <rect x="900" y="110" width="545" height="646" rx="42" fill="#fffdf8" stroke="#ccd7c8" stroke-width="3"/>
+  <rect x="941" y="152" width="464" height="335" rx="28" fill="#e4eddc"/>
+  <path d="M981 449 H1367" stroke="#9ab898" stroke-width="10" stroke-linecap="round"/>
+  <g>
+    <circle cx="1079" cy="286" r="36" fill="#ad7156"/>
+    <path d="M1025 410 Q1020 329 1079 332 Q1138 329 1133 410" fill="#527b5c"/>
+    <circle cx="1271" cy="286" r="36" fill="#ad7156"/>
+    <path d="M1217 410 Q1212 329 1271 332 Q1330 329 1325 410" fill="#c27b48"/>
+    <path d="M1133 377 Q1175 344 1217 377" fill="none" stroke="#527b5c" stroke-width="19" stroke-linecap="round"/>
+    <path d="M1175 206 C1139 169 1098 216 1175 256 C1252 216 1211 169 1175 206" fill="#b55047"/>
+  </g>
+  <g font-family="Microsoft YaHei, PingFang SC, sans-serif" text-anchor="middle">
+    <text x="1173" y="552" fill="#253d31" font-size="40" font-weight="700">想见你</text>
+    <rect x="941" y="594" width="464" height="106" rx="22" fill="#355940"/>
+    <text x="1173" y="661" fill="#ffffff" font-size="34" font-weight="700">核对后，确认示例发送</text>
+  </g>
+</svg>

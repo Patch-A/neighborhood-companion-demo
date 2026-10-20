@@ -2,6 +2,12 @@
 
 探索不识字、听不清的老人如何通过图卡和熟悉照片表达、接收家人回应。当前是支付宝智能体涌现奖的H5候选作品，尚未证明目标用户理解或孤独改善，也未提交赛事或接入支付宝小程序。
 
+## 投稿资料与检查（2026-10-20）
+
+先读[统一投稿资料入口](submission/README.md)，或下载[资料合集](dist/neighborhood-companion-submission-kit.zip)。目录包含可复制介绍、16:9封面、独立运行ZIP、评审说明、演示脚本、提交清单和哈希；[项目总览](docs/PROJECT_GUIDE.md)介绍全部现行与历史目录。本轮16项本地检查、27项回归和类型/语法检查通过，详情见[技术复核](submission/05-技术检查记录.md)。
+
+公开细则允许URL或ZIP，关联投稿页当前需支付宝登录，登录后的上传入口与评审运行条件仍需本人确认。当前本地网址不能远程访问；运行包不含模型密钥，实际AI需运行者自行配置。材料整理完成不等于已提交。
+
 ## 本地部署（2026-10-20）
 
 没有云账号时，从 [`local-demo/`](local-demo/) 开始：安装Node.js24 LTS，下载并解压[独立本地ZIP](dist/neighborhood-companion-local-demo.zip)，双击 `start.cmd` 后打开终端显示的本机网址。无需ChatGPT登录或安装前端依赖；DeepSeek密钥只在本机配置，未配置时仍能手动体验图卡。
@@ -29,4 +35,4 @@ GitHub保存源码；此全栈应用使用Workers、D1、R2及Sites可信身份�
 
 ## 历史材料
 
-根目录 `prototype/`、`server.js`、研究报告和 `dist/` 保留作历史材料；旧ZIP不包含本轮 `site/`。此前介绍见 [历史README](docs/README-before-site-sync.md)。下载最新版源码可用GitHub的Code → Download ZIP；源码ZIP不等于开箱即用的投稿运行包。
+根目录 `prototype/`、`server.js`、研究报告和旧 `dist/neighborhood-companion-demo.zip` 保留历史；当前运行包/资料合集按上述明确文件名选择。旧ZIP不包含本轮 `site/`。此前介绍见 [历史README](docs/README-before-site-sync.md)。下载最新版源码可用GitHub的Code → Download ZIP；源码ZIP不等于开箱即用的投稿运行包。

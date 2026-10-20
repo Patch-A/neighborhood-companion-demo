@@ -1,0 +1,66 @@
+{
+  "reviewed_on": "2026-10-20",
+  "app_version": "local-H5-v0.1",
+  "previous_source_commit": "609456cb68421b5396021828841df7e71ebf29c1",
+  "app_files": 27,
+  "app_archive_sha256": "48d24fda81d2770f5a4a0e0b5b14663eca1b997af5989f6c1d4579cc38ec422a",
+  "files": [
+    {
+      "path": "README.md",
+      "bytes": 2931,
+      "sha256": "03d87806f8904a72f2ee8db750ea5eb7773550cb93095a14b450b3564d418758"
+    },
+    {
+      "path": "01-投稿填写内容.md",
+      "bytes": 4741,
+      "sha256": "5ebe362408a06220cd4bfe6bd2035fc44dc679ffc578244a47e51b2ab1538d7b"
+    },
+    {
+      "path": "02-启动与评审说明.md",
+      "bytes": 2898,
+      "sha256": "fd03aedaeb8f1682316dc1a214ef005923349a6e404bb4f0dad6b9960fb9ea0d"
+    },
+    {
+      "path": "03-三分钟演示脚本.md",
+      "bytes": 1861,
+      "sha256": "155f697aba80a22f827f01e18556c822867a61a9da5f1e7eaa8dd43e2989332d"
+    },
+    {
+      "path": "04-提交前清单.md",
+      "bytes": 2266,
+      "sha256": "87f5fc1c6430555c6feda2377c596f751f9af81bb9adfc8559b0e3279eadf843"
+    },
+    {
+      "path": "05-技术检查记录.md",
+      "bytes": 4243,
+      "sha256": "7475a551211e69b5f3ddc3593c375213d5df3c62a150f2f0dee4c5b7b9970a7d"
+    },
+    {
+      "path": "cover-1600x900.png",
+      "bytes": 108742,
+      "sha256": "0e5fe00fc9e42d73a4b1ba47f3779b821f3440158dd09d4cd40518eedcbe60cf"
+    },
+    {
+      "path": "cover.svg",
+      "bytes": 2258,
+      "sha256": "61195e4d5375eaa5ca87d4e4183364393aae45a43165235b886e9135829a9a4e"
+    },
+    {
+      "path": "preview.jpg",
+      "bytes": 47236,
+      "sha256": "22dd881c088b56fe0c10a158aea8a27946470d3d71c23bfc5dd4c65edd69c819"
+    },
+    {
+      "path": "neighborhood-companion-local-demo.zip",
+      "bytes": 37651,
+      "sha256": "48d24fda81d2770f5a4a0e0b5b14663eca1b997af5989f6c1d4579cc38ec422a"
+    },
+    {
+      "path": "neighborhood-companion-local-demo.manifest.json",
+      "bytes": 4441,
+      "sha256": "606cb4787583d07d03148f500c3b3a222aecb7fc0713e015651341c21b214692"
+    }
+  ],
+  "runtime_credentials_included": false,
+  "access_note": "Loopback only; current logged-in submission form/ZIP availability and reviewer AI configuration are unverified."
+}
