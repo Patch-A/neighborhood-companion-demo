@@ -1,0 +1,12 @@
+@echo off
+setlocal
+cd /d "%~dp0"
+where node >nul 2>nul
+if errorlevel 1 (
+  echo Please install Node.js 24 LTS, then run this file again.
+  echo https://nodejs.org/
+  pause
+  exit /b 1
+)
+node server.mjs
+if errorlevel 1 pause

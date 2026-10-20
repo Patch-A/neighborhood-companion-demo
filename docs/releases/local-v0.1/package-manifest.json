@@ -1,0 +1,143 @@
+{
+  "archive": "neighborhood-companion-local-demo.zip",
+  "bytes": 37240,
+  "sha256": "0c47e847f6c2831b7b4346e24755e49df64fd2b168672e164e5ca2763d2f7e4f",
+  "files": [
+    {
+      "path": "AGENTS.md",
+      "bytes": 766,
+      "sha256": "f19d38170e26a37b2bf7fec3dac4ffe2786eb3b160dd9131f899ffa50d438ff4"
+    },
+    {
+      "path": "LICENSE",
+      "bytes": 1064,
+      "sha256": "e2040a792fa4f260eff538242dfba7d17bf2ac5d122ec673518448ee09ed673d"
+    },
+    {
+      "path": ".gitignore",
+      "bytes": 46,
+      "sha256": "ea3683bced9fbeeebbd7c3408964ddcad65e08b3d6559201172186c136e6fab2"
+    },
+    {
+      "path": ".env.example",
+      "bytes": 217,
+      "sha256": "1ee13d51a57d5f3242e60a4ffd836cb13846fd72d5125f563b4b8b23a736baa8"
+    },
+    {
+      "path": "package.json",
+      "bytes": 280,
+      "sha256": "11f717f70c405511fa1f44632235318700a99c29b38dfdde40b5dadbcf9036d3"
+    },
+    {
+      "path": "README.md",
+      "bytes": 5747,
+      "sha256": "ab15c194ce14b1d44b713e51d53e432b2ae971c2006c7f0deb34ed79b9202373"
+    },
+    {
+      "path": "SUBMISSION.md",
+      "bytes": 1936,
+      "sha256": "3b7be50e5699f3019f4c73b0ea6a6b7fdab764ffaa89b8aea12f6daf55944815"
+    },
+    {
+      "path": "server.mjs",
+      "bytes": 7639,
+      "sha256": "bcfc7c3b55e6d837464ad78a62fb93358d784f6950d791c7319955914b017391"
+    },
+    {
+      "path": "start.cmd",
+      "bytes": 224,
+      "sha256": "15ac3ff2657283d874347114d1f0d44b21c01f4058367f5e846dc4ea94166cca"
+    },
+    {
+      "path": "configure-ai.cmd",
+      "bytes": 254,
+      "sha256": "3c3915981f3e90329bfb731cba2d2aad96878b198cbb52da9824fe5e077a9ee8"
+    },
+    {
+      "path": "public/app.mjs",
+      "bytes": 12182,
+      "sha256": "4893a15f9be425fdf1bb4104e9b671c96d92ef3b050837e6227501fb6bbbb86a"
+    },
+    {
+      "path": "public/cards/again.svg",
+      "bytes": 601,
+      "sha256": "6aff7d770d7b15330f039ad9c3b4baff859fb93a5816b08d34c1529796b4d7cf"
+    },
+    {
+      "path": "public/cards/hello.svg",
+      "bytes": 814,
+      "sha256": "65868abdb21ab386d2ec757d17ce41e8e1f8c69227f5e37ea06cf214a0a03d00"
+    },
+    {
+      "path": "public/cards/later.svg",
+      "bytes": 517,
+      "sha256": "3f16626cd5d6faed997b097dd011ed410ed448325f7c911ce8d836c2f6f6ebda"
+    },
+    {
+      "path": "public/cards/miss-you.svg",
+      "bytes": 924,
+      "sha256": "1ccc1bd1d5a4ed0a26ec7bd540ea72e05ce91156d9e78dc489730119df00638f"
+    },
+    {
+      "path": "public/cards/photo.svg",
+      "bytes": 740,
+      "sha256": "e20e59018648c7b203da740e385d21314bfd99165331365f599e1a0fc0629546"
+    },
+    {
+      "path": "public/cards/walk.svg",
+      "bytes": 853,
+      "sha256": "76e9e6b9d4f7ac9b26f35ee152b9efbebf397f8966cded6a4bbd764be81b3f9d"
+    },
+    {
+      "path": "public/cards.mjs",
+      "bytes": 807,
+      "sha256": "2fcc4daf6acc5e56d474c5aa4562f327819e0da3e7b97eb0bac03b34745d39f3"
+    },
+    {
+      "path": "public/index.html",
+      "bytes": 5603,
+      "sha256": "a564ed80bfe1bc9a6f986f5603e88ce8e4f61d4bbfde60f90246e25d79e298ab"
+    },
+    {
+      "path": "public/state.mjs",
+      "bytes": 2840,
+      "sha256": "46b0845a7110db6cdd9a31ef13e192eec2002d8723930f0eb3b003300cb07337"
+    },
+    {
+      "path": "public/styles.css",
+      "bytes": 6915,
+      "sha256": "8db8168f5ff3b1ab3bd75431b86f170fcf391ef331a91aa3a5b42d12799ec779"
+    },
+    {
+      "path": "lib/family-ai.mjs",
+      "bytes": 3088,
+      "sha256": "b50e817de91389dced220c47334c2bb98f82f3570ccd337e375e9da362786a9b"
+    },
+    {
+      "path": "lib/picture-cards.mjs",
+      "bytes": 4766,
+      "sha256": "1fcef656866e585e280b1bfbb51eead81f332f177408d117e11eafb8c1a511c0"
+    },
+    {
+      "path": "scripts/export-site-assets.mjs",
+      "bytes": 2815,
+      "sha256": "e37029b66287dac863027c186611a8d01061aa583a50053d2f2993af45dc1da4"
+    },
+    {
+      "path": "scripts/package.py",
+      "bytes": 2229,
+      "sha256": "9ff863cc441a34886d55199c8d50738170189e74ea73f4966ea30fad22dc3a62"
+    },
+    {
+      "path": "tests/demo-state.test.mjs",
+      "bytes": 2251,
+      "sha256": "7a8d371574472faab18b5fb48e80d41bfc59211746fed20f094c73af935fa564"
+    },
+    {
+      "path": "tests/local-server.test.mjs",
+      "bytes": 6339,
+      "sha256": "68048323a9d1ceae60567c55e8bb8262e716db3bbac60b20cbae42abb042749b"
+    }
+  ],
+  "runtime_secrets_included": false
+}
