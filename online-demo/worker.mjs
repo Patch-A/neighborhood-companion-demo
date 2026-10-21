@@ -1,4 +1,4 @@
-import {requestCardSuggestion} from '../local-demo/lib/family-ai.mjs';
+import {requestCardSuggestion} from './model.mjs';
 import {reserve,usedToday,dayAt} from './quota.mjs';
 
 const encoder=new TextEncoder();
