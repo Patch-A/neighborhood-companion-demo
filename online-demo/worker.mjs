@@ -42,8 +42,8 @@ export function createHandler({suggest=requestCardSuggestion,clock=()=>Date.now(
   return async function handle(request,env){
     try{
       const url=new URL(request.url),now=clock();
-      if(request.headers.get('sec-fetch-site')==='cross-site')throw fail('请直接打开作品页面。',403);
       if(url.pathname.startsWith('/api/')){
+        if(request.headers.get('sec-fetch-site')==='cross-site')throw fail('请直接打开作品页面。',403);
         const configured=env.AI_ENABLED==='true'&&!!env.FAMILY_AI_API_KEY&&!!env.DB;
         if(url.pathname==='/api/status'&&request.method==='GET'){
           if(!configured)return json(200,{aiAvailable:false,provider:'DeepSeek',token:'',dailyLimit:50,usedToday:0});

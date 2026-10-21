@@ -76,3 +76,10 @@ test('D1 errors stop paid calls, and private/unknown paths are not served as ass
   for(const path of ['/.env.local','/worker.mjs','/api/unknown'])assert.equal((await s.handle(new Request(origin+path),s.env)).status,404);
   const asset=await s.handle(new Request(origin+'/'),s.env);assert.equal(asset.status,200);assert.match(asset.headers.get('Content-Security-Policy'),/frame-ancestors 'none'/);
 });
+test('navigation from a contest or shared link loads the page; cross-site API calls remain rejected',async()=>{
+  const s=setup();
+  const page=await s.handle(new Request(origin+'/',{headers:{'sec-fetch-site':'cross-site','sec-fetch-mode':'navigate'}}),s.env);
+  assert.equal(page.status,200);assert.equal(await page.text(),'synthetic page');
+  const status=await s.handle(new Request(origin+'/api/status',{headers:{'sec-fetch-site':'cross-site'}}),s.env);
+  assert.equal(status.status,403);assert.equal(s.calls,0);
+});
