@@ -9,17 +9,34 @@ import shutil
 import sys
 from urllib.parse import unquote
 import zipfile
+import argparse
+
+parser=argparse.ArgumentParser()
+parser.add_argument('--reuse-runtime',action='store_true',help='Verify and reuse the unchanged local runtime ZIP')
+options=parser.parse_args()
 
 root=Path(__file__).resolve().parents[1]
 submission=root/'submission'
 dist=root/'dist'
 submission.mkdir(exist_ok=True);dist.mkdir(exist_ok=True)
-sys.argv=['package.py','--output',str(submission/'neighborhood-companion-local-demo.zip')]
-runpy.run_path(str(root/'local-demo/scripts/package.py'),run_name='__main__')
 app_manifest=submission/'neighborhood-companion-local-demo.manifest.json'
+if options.reuse_runtime:
+    previous=json.loads(app_manifest.read_text(encoding='utf8'))
+    archive_path=submission/previous['archive']
+    assert hashlib.sha256(archive_path.read_bytes()).hexdigest()==previous['sha256']
+    with zipfile.ZipFile(archive_path) as archive:
+        assert archive.testzip() is None
+        assert len(archive.namelist())==len(previous['files'])
+        for row in previous['files']:
+            source=(root/'local-demo'/row['path']).read_bytes()
+            assert hashlib.sha256(source).hexdigest()==row['sha256'], 'Runtime changed: '+row['path']
+            assert source==archive.read('neighborhood-companion-local-demo/'+row['path'])
+else:
+    sys.argv=['package.py','--output',str(submission/'neighborhood-companion-local-demo.zip')]
+    runpy.run_path(str(root/'local-demo/scripts/package.py'),run_name='__main__')
 app=json.loads(app_manifest.read_text(encoding='utf8'))
 shutil.copyfile(submission/app['archive'],dist/app['archive'])
-files=['README.md','01-投稿填写内容.md','02-启动与评审说明.md','03-三分钟演示脚本.md','04-提交前清单.md','05-技术检查记录.md','cover-1600x900.png','cover.svg','preview.jpg',app['archive'],app_manifest.name]
+files=['README.md','01-投稿填写内容.md','02-启动与评审说明.md','03-三分钟演示脚本.md','04-提交前清单.md','05-技术检查记录.md','06-在线体验与投稿链接.md','cover-1600x900.png','cover.svg','preview.jpg','online-preview.jpg',app['archive'],app_manifest.name]
 secret_values=[os.environ[k].encode() for k in ('FAMILY_AI_API_KEY','DEEPSEEK_API_KEY') if os.environ.get(k)]
 rows=[]
 for name in files:
@@ -36,7 +53,8 @@ png=(submission/'cover-1600x900.png').read_bytes()
 assert png[:8]==b'\x89PNG\r\n\x1a\n'
 assert int.from_bytes(png[16:20],'big')==1600 and int.from_bytes(png[20:24],'big')==900 and len(png)<5*1024*1024
 assert (submission/'preview.jpg').read_bytes()[:2]==b'\xff\xd8'
-manifest={'reviewed_on':'2026-10-20','app_version':'local-H5-v0.1','previous_source_commit':'609456cb68421b5396021828841df7e71ebf29c1','app_files':len(app['files']),'app_archive_sha256':app['sha256'],'files':rows,'runtime_credentials_included':False,'access_note':'Loopback only; current logged-in submission form/ZIP availability and reviewer AI configuration are unverified.'}
+assert (submission/'online-preview.jpg').read_bytes()[:2]==b'\xff\xd8'
+manifest={'reviewed_on':'2026-10-21','app_version':'online-H5-demo; bundled-local-v0.1','online_source_commit':'66d24b70defe70af0eaa891b5c41b2919756af71','runtime_source_commit':'14d574c41fe6f853f4a605b812158d1c1c11ffd0','public_url':'https://neighborhood-companion-demo.patch-neighborhood-demo.workers.dev/','app_files':len(app['files']),'app_archive_sha256':app['sha256'],'files':rows,'runtime_credentials_included':False,'access_note':'Online Chrome/API and real model cases verified. Phone cellular/Alipay browser and actual submission pending. Bundled ZIP remains the separate loopback runtime.'}
 (submission/'manifest.json').write_text(json.dumps(manifest,ensure_ascii=False,indent=2)+'\n',encoding='utf8')
 files.append('manifest.json')
 kit=dist/'neighborhood-companion-submission-kit.zip'

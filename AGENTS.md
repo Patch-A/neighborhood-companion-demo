@@ -1,5 +1,7 @@
 # 项目开发约定
 
+- 2026-10-21独立免费H5已发布于 https://neighborhood-companion-demo.patch-neighborhood-demo.workers.dev/ ，运行源码66d24b7。Cloudflare终端授权已完成；Secret仅服务端，源配置默认AI关闭。线上模型、人工核对、虚构往返已验，手机流量/支付宝浏览器、真人效果和正式投稿未验。此前“待授权/未发布”属于历史状态。原Sites保持不变，不能拿当前H5验收替代其家庭AI验证。
+
 - 2026-10-20用户限定暂时免费部署，已自行注册Cloudflare。新增 `online-demo/` 作为独立投稿H5的Workers Free + D1 Free适配；只使用免费托管，不购买/升级套餐或域名。原Sites标识和访问不变。账号授权、实际发布URL、国内可达性和线上模型需分别核验；准备代码不等于已部署。DeepSeek仍按已有模型账户计费，用户密钥不随源码分发。
 
 - 最新应用在 `site/`；先阅读 `docs/CODEX_HANDOFF.md` 和 `site/README.md`。根目录旧原型、研究、旧 ZIP 和 `comparison-source/` 是历史资料，保留用户已有修改。

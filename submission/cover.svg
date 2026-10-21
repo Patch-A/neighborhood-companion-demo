@@ -8,8 +8,8 @@
     <text x="97" y="480" fill="#516354" font-size="31">熟悉的照片 · 少量图卡 · 示例双方回应</text>
     <path d="M96 540 H710" stroke="#ccd7c8" stroke-width="2"/>
     <text x="97" y="603" fill="#253d31" font-size="29">DeepSeek 辅助选卡，核对后确认表达</text>
-    <text x="97" y="653" fill="#516354" font-size="27">同一浏览器模拟双方，可在本机体验</text>
-    <text x="97" y="786" fill="#516354" font-size="24">本地 H5 演示 · 图卡理解与使用效果待目标用户验证</text>
+    <text x="97" y="653" fill="#516354" font-size="27">打开网页，体验示例图卡往返</text>
+    <text x="97" y="786" fill="#516354" font-size="24">在线 H5 演示 · 图卡理解与使用效果待目标用户验证</text>
   </g>
   <rect x="900" y="110" width="545" height="646" rx="42" fill="#fffdf8" stroke="#ccd7c8" stroke-width="3"/>
   <rect x="941" y="152" width="464" height="335" rx="28" fill="#e4eddc"/>

@@ -1,54 +1,66 @@
 {
-  "reviewed_on": "2026-10-20",
-  "app_version": "local-H5-v0.1",
-  "previous_source_commit": "609456cb68421b5396021828841df7e71ebf29c1",
+  "reviewed_on": "2026-10-21",
+  "app_version": "online-H5-demo; bundled-local-v0.1",
+  "online_source_commit": "66d24b70defe70af0eaa891b5c41b2919756af71",
+  "runtime_source_commit": "14d574c41fe6f853f4a605b812158d1c1c11ffd0",
+  "public_url": "https://neighborhood-companion-demo.patch-neighborhood-demo.workers.dev/",
   "app_files": 27,
   "app_archive_sha256": "48d24fda81d2770f5a4a0e0b5b14663eca1b997af5989f6c1d4579cc38ec422a",
   "files": [
     {
       "path": "README.md",
-      "bytes": 2931,
-      "sha256": "03d87806f8904a72f2ee8db750ea5eb7773550cb93095a14b450b3564d418758"
+      "bytes": 3396,
+      "sha256": "02c20d4d2f03fb83b441a8dc04e95fea2654f3bb596babd9c5dbab19a94a54a9"
     },
     {
       "path": "01-投稿填写内容.md",
-      "bytes": 4741,
-      "sha256": "5ebe362408a06220cd4bfe6bd2035fc44dc679ffc578244a47e51b2ab1538d7b"
+      "bytes": 5116,
+      "sha256": "151619afcb4fc4ac5bdf435066acd43af67f50550188bddc56ee45623b0fb868"
     },
     {
       "path": "02-启动与评审说明.md",
-      "bytes": 2898,
-      "sha256": "fd03aedaeb8f1682316dc1a214ef005923349a6e404bb4f0dad6b9960fb9ea0d"
+      "bytes": 3313,
+      "sha256": "96f1d3724ba4f5cc4399e125f90ff2f0f467343e8d0d6c064bbf06c10d18bb56"
     },
     {
       "path": "03-三分钟演示脚本.md",
-      "bytes": 1861,
-      "sha256": "155f697aba80a22f827f01e18556c822867a61a9da5f1e7eaa8dd43e2989332d"
+      "bytes": 1878,
+      "sha256": "3ed4e06ed6fdd8eaf5a895e69bdb4f1b0005c6d9e671483a82bee4ea5bdaae65"
     },
     {
       "path": "04-提交前清单.md",
-      "bytes": 2266,
-      "sha256": "87f5fc1c6430555c6feda2377c596f751f9af81bb9adfc8559b0e3279eadf843"
+      "bytes": 2986,
+      "sha256": "f7d9c616a70990482e5f84ea9731fb91a1933b31295ae92e6a547433df46aca1"
     },
     {
       "path": "05-技术检查记录.md",
-      "bytes": 4243,
-      "sha256": "7475a551211e69b5f3ddc3593c375213d5df3c62a150f2f0dee4c5b7b9970a7d"
+      "bytes": 4495,
+      "sha256": "c3f1829ededf75fc09b4713344e77002fd0ed23004ade80fb82f384a99047d3b"
+    },
+    {
+      "path": "06-在线体验与投稿链接.md",
+      "bytes": 3775,
+      "sha256": "48221094b51694f7af8b6442f10aff526c8472a893e734e142d8671d6073f656"
     },
     {
       "path": "cover-1600x900.png",
-      "bytes": 108742,
-      "sha256": "0e5fe00fc9e42d73a4b1ba47f3779b821f3440158dd09d4cd40518eedcbe60cf"
+      "bytes": 107678,
+      "sha256": "51929819a8a6f90f6ca08f4ea9d184910de75d47713e2a99b55a57aeaa74421e"
     },
     {
       "path": "cover.svg",
-      "bytes": 2258,
-      "sha256": "61195e4d5375eaa5ca87d4e4183364393aae45a43165235b886e9135829a9a4e"
+      "bytes": 2249,
+      "sha256": "c78ee24f176ef88ce28d80a96364b33558cc6094e61775753a6b593c5ce71a85"
     },
     {
       "path": "preview.jpg",
       "bytes": 47236,
       "sha256": "22dd881c088b56fe0c10a158aea8a27946470d3d71c23bfc5dd4c65edd69c819"
+    },
+    {
+      "path": "online-preview.jpg",
+      "bytes": 185442,
+      "sha256": "b1c0ba598a9ae252bc392d30c24ff44744ed9bebb8ecf151cb612b08b5c8c21c"
     },
     {
       "path": "neighborhood-companion-local-demo.zip",
@@ -62,5 +74,5 @@
     }
   ],
   "runtime_credentials_included": false,
-  "access_note": "Loopback only; current logged-in submission form/ZIP availability and reviewer AI configuration are unverified."
+  "access_note": "Online Chrome/API and real model cases verified. Phone cellular/Alipay browser and actual submission pending. Bundled ZIP remains the separate loopback runtime."
 }

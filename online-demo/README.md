@@ -1,4 +1,6 @@
-# 免费托管投稿H5（尚未部署）
+# 免费托管投稿H5
+
+2026-10-21已发布：[打开邻里有伴](https://neighborhood-companion-demo.patch-neighborhood-demo.workers.dev/)。无需Cloudflare/ChatGPT账号或体验者自备密钥，DeepSeek在服务端配置；当前电脑Chrome、API、实际模型及示例往返已验收。手机流量/支付宝内置浏览器仍待本人检查。详见[线上投稿说明](../submission/06-在线体验与投稿链接.md)。
 
 本目录把已有本地虚构家庭演示适配为Cloudflare Workers静态资源 + Worker接口 + D1用量库。原`local-demo/`仍可独立运行，原Sites访问不变。没有真实家庭跨设备服务，不能据此声称目标老人看懂或孤独改善。
 
@@ -8,7 +10,7 @@
 - Workers Free每日10万动态请求；D1 Free每日500万行读取、10万行写入、总5GB。免费额度用尽会失败，不在代码中自动升级套餐。
 - **DeepSeek不因此免费**。继续按已有模型账户计费；也可保持`AI_ENABLED=false`只体验手选。次数限制不是人民币预算或账户级硬上限。
 - 使用平台`workers.dev`网址和HTTPS，无需购买域名。国内网络可达性和DeepSeek地域可用性尚未实测；部署成功不代表评审网络一定能访问。先测手机流量/不同网络，失败就不能把此链接填为已验收入口。
-- 当前尚无线上URL、Cloudflare部署回执或线上模型测试；不能将GitHub源码或本机地址当作已部署。
+- 当前真实体验入口为上文HTTPS。新网址刚启用曾握手失败，后正常200；不绕过证书验证。当前电脑有代理式DNS，不据此声称大陆不同网络均已验收。
 
 官方核对于2026-10-20：[Workers价格](https://developers.cloudflare.com/workers/platform/pricing/)、[D1价格](https://developers.cloudflare.com/d1/platform/pricing/)、[免费用尽行为](https://developers.cloudflare.com/d1/reference/faq/)、[静态资源绑定](https://developers.cloudflare.com/workers/static-assets/binding/)。
 
@@ -18,7 +20,7 @@ Node24。使用本项目`site/`现有Wrangler4.92.0，不更新pnpm11.25.0及锁
 
 ```powershell
 node online-demo/build.mjs
-node --test --test-isolation=none online-demo/tests/worker.test.mjs
+node --test --test-isolation=none online-demo/tests/*.test.mjs
 node site/node_modules/wrangler/bin/wrangler.js dev --config online-demo/wrangler.jsonc --local --ip 127.0.0.1 --port 3137 --inspector-port 0
 ```
 
@@ -56,3 +58,7 @@ node site/node_modules/wrangler/bin/wrangler.js deploy --config online-demo/wran
 D1仅保存次数事件、日期、分钟和由服务端密钥签名后按日变化的IP摘要，不保存原始IP、文字、照片或消息。摘要不是不可逆匿名保证。访问AI状态时清理早于前两天的记录；无人访问时不自动清理。Cloudflare/DeepSeek各自仍可能按平台政策处理网络元数据/主动提交的文字。默认关闭Worker应用日志采集；代码不输出请求正文/密钥。
 
 照片和模拟消息仍只存当前浏览器标签页，不能跨设备收发。页面会明确虚构双方、AI状态和回退。免费服务不提供稳定性承诺，投稿期间需要持续核验可访问和额度。
+
+## 运行时兼容
+
+线上单独使用model.mjs的manual重定向请求适配，不跟随跳转、不把密钥转发到其他地址；提示与固定图卡解析仍复用本地模块。真实workerd不支持Node可用的redirect:error，本轮由真实运行时及禁用外网的模型替身证实并修复。原Sites传输源码保持原样，该同类兼容风险留待单独修正/验收，不能用独立H5结果替代其家庭AI验证。

@@ -1,5 +1,8 @@
 # 邻里有伴项目总览
 
+2026-10-21最新状态：**[免费在线H5已发布](https://neighborhood-companion-demo.patch-neighborhood-demo.workers.dev/)**，实际DeepSeek、人工核对与示例往返已验收。运行源码66d24b7；68项自动检查、类型及构建通过。先读[在线投稿说明](../submission/06-在线体验与投稿链接.md)，手机流量/支付宝浏览器和实际投稿仍待本人完成。下面10月20日“待授权/暂无URL”为历史时点，本地运行包作为备选保留。
+
+
 更新时间：2026-10-20（北京时间）。先看[投稿资料入口](../submission/README.md)，开发接手看[交接说明](CODEX_HANDOFF.md)。
 
 本日后续新增[暂时免费托管适配](../online-demo/README.md)：Workers Free + D1 Free，用户已注册账号，等待终端授权及实际发布验收。代码准备、GitHub交付、生产部署和国内可访问是不同状态，当前尚无已验收公网URL。原投稿ZIP保持本地版；下方本地交付检查属于本日较早时点。后续本轮8+16+27+14共65项检查、类型、Site构建和Worker dry-run通过，未作真人或新付费模型调用。
