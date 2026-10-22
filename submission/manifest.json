@@ -1,35 +1,40 @@
 {
   "reviewed_on": "2026-10-22",
-  "app_version": "QMuse-import-READY; Cloudflare-online; bundled-local-v0.1",
+  "app_version": "QMuse-public-90100084; Cloudflare-backup; bundled-local-v0.1",
   "online_source_commit": "66d24b70defe70af0eaa891b5c41b2919756af71",
   "qmuse_source_commit": "6ad18222d5b152eb4a6a1979493e4323bd34e052",
   "qmuse_import_version": "90100084",
   "qmuse_editor_url": "https://qmuse.cn/app/3379366579041450",
-  "qmuse_public_url": null,
+  "qmuse_public_url": "https://render.qmuse.pub/p/muse/3379366579041450/index.html",
   "qmuse_ai_verified": true,
   "qmuse_browser_ai_verified": false,
+  "qmuse_browser_ai_owner_reported": true,
+  "qmuse_public_http_verified": true,
+  "qmuse_public_version_verified": "90100084",
+  "submission_status": "owner_reported_submitted",
+  "submission_receipt_verified": false,
   "qmuse_cloud_mode": "SINGLE_ENV",
-  "submission_ready": false,
-  "public_url_submission_accepted": false,
+  "submission_ready": true,
+  "public_url_submission_accepted": null,
   "runtime_source_commit": "14d574c41fe6f853f4a605b812158d1c1c11ffd0",
-  "public_url": "https://neighborhood-companion-demo.patch-neighborhood-demo.workers.dev/",
+  "public_url": "https://render.qmuse.pub/p/muse/3379366579041450/index.html",
   "app_files": 27,
   "app_archive_sha256": "48d24fda81d2770f5a4a0e0b5b14663eca1b997af5989f6c1d4579cc38ec422a",
   "files": [
     {
       "path": "README.md",
-      "bytes": 3037,
-      "sha256": "366cdf99b0ec7bd0d93938d68e3b264bbfff56278506fe4b728dcbf88d46b506"
+      "bytes": 2418,
+      "sha256": "6b73e80e5b546a6bf5f3ad453220c5ba4226a5b1ba84653b377285f9776fa4f5"
     },
     {
       "path": "01-投稿填写内容.md",
-      "bytes": 5906,
-      "sha256": "1c207147b54a6180679396bf0425a8b2a8aff0137f2ca9ca3f377ab2797eafaa"
+      "bytes": 2865,
+      "sha256": "30536e615081f3a974fde66b93450324922b4acea63154aa2f80e50d4ed7b3d9"
     },
     {
       "path": "02-启动与评审说明.md",
-      "bytes": 3975,
-      "sha256": "afee7df1094066bd5e6124e24fcf3c93fa6b9f630b05f01a9cfc486e2bd1cd86"
+      "bytes": 3752,
+      "sha256": "c45528eec48e51d896026a42395345df36cf147e8e3dd70c70dc082b44046302"
     },
     {
       "path": "03-三分钟演示脚本.md",
@@ -38,23 +43,23 @@
     },
     {
       "path": "04-提交前清单.md",
-      "bytes": 2419,
-      "sha256": "9867b8e068dc964f1955483b49c7d20131fad0b9c53f2a9ceb19a007c9a61a85"
+      "bytes": 2151,
+      "sha256": "f061702defc584ed37d1bb1a1805514cf04239fa7676c8c2fe9bdef6b5698df8"
     },
     {
       "path": "05-技术检查记录.md",
-      "bytes": 5220,
-      "sha256": "409433e64e7030dcb79236b08053a3d1573a20e9197f841e26f3363acb8862e5"
+      "bytes": 1738,
+      "sha256": "661c33be8ddac333e41c3d4a7db44b80feeba53d88dbc7935c38c95388b0c1f0"
     },
     {
       "path": "06-在线体验与投稿链接.md",
-      "bytes": 3266,
-      "sha256": "84a4f6c1f2dba3f27a95570d1eba311fc6008660507df47d626951fc4113a0c1"
+      "bytes": 1758,
+      "sha256": "d958be5fe07eb38076db94ee14ebb4326b5554bd9cd14d5cc7f45f6f8981af70"
     },
     {
       "path": "07-QMuse导入进度.md",
-      "bytes": 8436,
-      "sha256": "4b94ab3f2125b3f16b16935f042c41e65bc7ac88a0de4596157624c0014550aa"
+      "bytes": 2339,
+      "sha256": "744f683003793f1bfb5e775a39091eb60da88e6f6e0b256284b07c98bc5de56b"
     },
     {
       "path": "cover-1600x900.png",
@@ -88,5 +93,5 @@
     }
   ],
   "runtime_credentials_included": false,
-  "access_note": "Cloudflare demo exists but submission field rejects its URL. QMuse actual isolated cloud API permissions, private model, photo/fallback and concurrent quota verified. Owner reports preview connection notice cleared. Public URL, real browser AI/human confirmation and submission acceptance remain pending. Bundled ZIP remains the separate loopback runtime."
+  "access_note": "QMuse public HTML version 90100084/prod and initial assets verified with anonymous HTTP. Owner reports browser AI candidates, manual confirmation and simulated exchange passed, and says submitted to the contest. Contest receipt/status is not independently verified; do not resubmit. Cloud APIs verified separately. submission_ready means demo/material readiness, not contest acceptance. Local ZIP is a separate loopback backup. Screenshots are older local/Cloudflare views, not current QMuse proof."
 }
