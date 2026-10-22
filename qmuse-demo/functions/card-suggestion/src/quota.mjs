@@ -15,7 +15,9 @@ async function take(store,scope,limit,expiresAt){
   return false;
 }
 export async function reserve(store,secret,userId,now){
-  const day=dayAt(now),minute=Math.floor(now/60000),user=userScope(secret,userId,day),expiry=now+3*86400000;
+  // The managed integer column is signed 32-bit: milliseconds would be rejected.
+  const day=dayAt(now),minute=Math.floor(now/60000),user=userScope(secret,userId,day),expiry=Math.ceil((now+3*86400000)/1000);
+  if(!Number.isSafeInteger(expiry)||expiry>2147483647)throw Error('Quota unavailable');
   for(const [scope,limit] of [[`g:${day}`,50],[`gm:${minute}`,10],[`u:${day}:${user}`,5],[`um:${minute}:${user}`,2]]){
     if(!await take(store,scope,limit,expiry))return false;
   }

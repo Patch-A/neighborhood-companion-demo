@@ -15,7 +15,7 @@ export default async ({req,res})=>{
   const store={
     async count(scope){return (await db().listRows({databaseId,tableId:'ai_quota_slots',queries:[Query.equal('scope',[scope]),Query.limit(1)]})).total;},
     async create(rowId,data){await db().createRow({databaseId,tableId:'ai_quota_slots',rowId,data,permissions:[]});},
-    async purge(now){const expired=await db().listRows({databaseId,tableId:'ai_quota_slots',queries:[Query.lessThan('expiresAt',now),Query.limit(50)]});for(const row of expired.rows)await db().deleteRow({databaseId,tableId:'ai_quota_slots',rowId:row.$id});},
+    async purge(now){const expired=await db().listRows({databaseId,tableId:'ai_quota_slots',queries:[Query.lessThan('expiresAt',Math.floor(now/1000)),Query.limit(50)]});for(const row of expired.rows)await db().deleteRow({databaseId,tableId:'ai_quota_slots',rowId:row.$id});},
   };
   return handle({req,res},{apiKey,store});
 };

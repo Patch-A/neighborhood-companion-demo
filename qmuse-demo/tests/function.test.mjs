@@ -5,7 +5,7 @@ import {dayAt} from '../functions/card-suggestion/src/quota.mjs';
 
 function setup({suggest=async()=>['photo']}={}){
   const rows=new Map();let now=Date.UTC(2026,9,21,1),calls=0;
-  const store={async count(scope){return [...rows.values()].filter(r=>r.scope===scope).length;},async create(id,data){if(rows.has(id))throw Object.assign(Error('Conflict'),{code:409});rows.set(id,data);},async purge(time){for(const [id,row] of rows)if(row.expiresAt<time)rows.delete(id);}};
+  const store={async count(scope){return [...rows.values()].filter(r=>r.scope===scope).length;},async create(id,data){assert.ok(Number.isInteger(data.expiresAt)&&data.expiresAt>=-2147483648&&data.expiresAt<=2147483647,'real cloud integer must fit signed 32-bit');if(rows.has(id))throw Object.assign(Error('Conflict'),{code:409});rows.set(id,data);},async purge(time){for(const [id,row] of rows)if(row.expiresAt<Math.floor(time/1000))rows.delete(id);}};
   const options={clock:()=>now,suggest:async(...args)=>{calls++;return suggest(...args);}};
   const invoke=(handler,user='synthetic-visitor',body={action:'suggest',text:'想看家人的照片',consent:true},apiKey='synthetic-not-a-real-key')=>handler({req:{headers:user?{'x-appwrite-user-id':user}:{},bodyJson:body,bodyText:JSON.stringify(body)},res:{json:(body,status)=>({body,status})}},{apiKey,store});
   const handler=createHandler(options);
@@ -18,3 +18,9 @@ test('failed suggestions retain durable daily slots; errors do not leak provider
 test('global daily 50 limit and global minute 10 persist across visitors and handlers',async()=>{const s=setup();for(let g=0;g<5;g++){if(g)s.advance(60000);const results=await Promise.all(Array.from({length:10},(_,i)=>s.invoke(`visitor-${g}-${i}`)));assert.equal(results.filter(r=>r.status===200).length,10);}s.advance(60000);assert.equal((await s.invokeOther(s.restart(),'new-user')).status,429);assert.equal(s.calls,50);assert.equal(await s.store.count(`g:${dayAt(s.now)}`),50);});
 test('day boundaries use Beijing time; cleanup only removes expired old slots',async()=>{assert.equal(dayAt(Date.UTC(2026,9,21,16)),'2026-10-22');const s=setup();await s.invoke();assert.equal(s.rows.size,4);await s.store.purge(s.now);assert.equal(s.rows.size,4);s.advance(4*86400000);await s.invoke('u',{action:'status'});assert.equal(s.rows.size,0);});
 test('stored quota contains no input, photo, raw visitor identity or key',async()=>{const s=setup();assert.equal((await s.invoke('synthetic-private-visitor')).status,200);const value=JSON.stringify([...s.rows]);for(const forbidden of ['照片','synthetic-private-visitor','synthetic-not-a-real-key','text','photo'])assert.equal(value.includes(forbidden),false);});
+test('expiry uses signed 32-bit Unix seconds and retains slots until three full days',async()=>{
+  const s=setup();assert.equal((await s.invoke()).status,200);
+  for(const row of s.rows.values())assert.equal(row.expiresAt,Math.ceil((s.now+3*86400000)/1000));
+  s.advance(3*86400000-1000);await s.invoke('u',{action:'status'});assert.equal(s.rows.size,4);
+  s.advance(3000);await s.invoke('u',{action:'status'});assert.equal(s.rows.size,0);
+});

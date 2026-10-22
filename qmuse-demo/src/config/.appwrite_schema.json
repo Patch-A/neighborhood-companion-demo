@@ -17,7 +17,7 @@
           "key": "expiresAt",
           "type": "integer",
           "required": true,
-          "comment": "用于清理的到期毫秒"
+          "comment": "用于清理的到期Unix秒（32位整数）"
         }
       ],
       "indexes": [
