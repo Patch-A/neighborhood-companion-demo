@@ -2,8 +2,8 @@
   "reviewed_on": "2026-10-22",
   "app_version": "QMuse-import-READY; Cloudflare-online; bundled-local-v0.1",
   "online_source_commit": "66d24b70defe70af0eaa891b5c41b2919756af71",
-  "qmuse_source_commit": "c705fbe7c7f16aaf91fc6e0aa0258d4c6b05aee0",
-  "qmuse_import_version": "90100047",
+  "qmuse_source_commit": "8304740f13334199440e5381000a0aed141e43ac",
+  "qmuse_import_version": "90100065",
   "qmuse_editor_url": "https://qmuse.cn/app/3379366579041450",
   "qmuse_public_url": null,
   "qmuse_ai_verified": false,
@@ -50,8 +50,8 @@
     },
     {
       "path": "07-QMuse导入进度.md",
-      "bytes": 4185,
-      "sha256": "1d821f8c4b28168b51051c7d781d02c8f01a1ce32f9b57ca0b4e9d8b8e5ea594"
+      "bytes": 5731,
+      "sha256": "325bed615928e863b49c4b7d2f3e556c8f7f3719db52c31b3069cfb2ea5bf97d"
     },
     {
       "path": "cover-1600x900.png",
@@ -85,5 +85,5 @@
     }
   ],
   "runtime_credentials_included": false,
-  "access_note": "Cloudflare demo exists but submission field rejects its URL. QMuse import READY; owner reports table permissions set and authorizes the secret, but effective permissions, secret configuration, real cloud AI, public publishing and submission acceptance are pending. Bundled ZIP remains the separate loopback runtime."
+  "access_note": "Cloudflare demo exists but submission field rejects its URL. QMuse diagnostics update READY; initial preview rendered but cloud status failed. Table settings are visible in owner screenshot; effective permissions, connection diagnosis, secret configuration, real cloud AI, public publishing and submission acceptance are pending. Bundled ZIP remains the separate loopback runtime."
 }
