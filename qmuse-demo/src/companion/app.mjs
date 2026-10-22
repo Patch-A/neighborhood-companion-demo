@@ -101,7 +101,7 @@ $('remove-photo').addEventListener('click',()=>{draft().photo=null;save();render
 $('reset').addEventListener('click',()=>{if(busy||photoBusy){error('请等待当前处理结束，再重置演示。');return;}$('reset-dialog').showModal();});
 $('cancel-reset').addEventListener('click',()=>$('reset-dialog').close());
 $('confirm-reset').addEventListener('click',()=>{state=freshState();activeMessage=null;photoGeneration++;try{sessionStorage.removeItem(KEY);}catch{}error('');notice('演示已清空，可以重新开始。');$('extra').open=false;$('reset-dialog').close();render();});
-async function readAiStatus(){try{const status=await api.getStatus();if(!alive)return;token='';aiAvailable=status.aiAvailable;used=status.usedToday;updateAiStatus();}catch{if(!alive)return;aiAvailable=false;refreshSelection();error('QMuse云服务暂时未连接，请刷新或先手动选择图卡。');$('ai-status').textContent='AI 服务未连接';}}
+async function readAiStatus(){try{const status=await api.getStatus();if(!alive)return;token='';aiAvailable=status.aiAvailable;used=status.usedToday;updateAiStatus();}catch(cause){if(!alive)return;aiAvailable=false;refreshSelection();error(cause?.name==='CompanionCloudError'?cause.message:'QMuse云服务暂时未连接，请刷新或先手动选择图卡。');$('ai-status').textContent='AI 服务未连接';}}
 render();void readAiStatus();
 return ()=>{alive=false;photoGeneration++;};
 }

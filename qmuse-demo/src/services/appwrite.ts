@@ -16,6 +16,7 @@ import {
   type Models,
   type QmuseRuntimeContext,
 } from "@qmuse/appwrite-runtime-sdk";
+import {cloudFailure} from "./cloudDiagnostics";
 
 export const client = new Client();
 export const account = new Account(client);
@@ -92,8 +93,9 @@ export { ID, Permission, Query, Role };
 
 const functions = new Functions(client);
 export async function executeQmuseFunction({functionId,body}:{functionId:string;body?:string}){
-  await initAppwrite();
+  try{await initAppwrite();}catch(error){throw cloudFailure("SESSION",error);}
   try{return await functions.createExecution({functionId,body});}
-  catch(error){if(!(error&&typeof error==="object"&&"code" in error&&Number(error.code)===401))throw error;}
-  await refreshAppwriteSession();return functions.createExecution({functionId,body});
+  catch(error){if(!(error&&typeof error==="object"&&"code" in error&&Number(error.code)===401))throw cloudFailure("FUNCTION",error);}
+  try{await refreshAppwriteSession();}catch(error){throw cloudFailure("SESSION",error);}
+  try{return await functions.createExecution({functionId,body});}catch(error){throw cloudFailure("FUNCTION",error);}
 }
