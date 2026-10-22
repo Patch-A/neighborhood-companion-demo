@@ -11,7 +11,9 @@
   "qmuse_browser_ai_owner_reported": true,
   "qmuse_public_http_verified": true,
   "qmuse_public_version_verified": "90100084",
-  "submission_status": "owner_reported_submitted",
+  "submission_status": "owner_reports_alipay_submitted_or_under_review",
+  "submission_status_exact_label": null,
+  "submission_status_provenance": "owner_viewed_alipay_page",
   "submission_receipt_verified": false,
   "qmuse_cloud_mode": "SINGLE_ENV",
   "submission_ready": true,
@@ -23,13 +25,13 @@
   "files": [
     {
       "path": "README.md",
-      "bytes": 2418,
-      "sha256": "6b73e80e5b546a6bf5f3ad453220c5ba4226a5b1ba84653b377285f9776fa4f5"
+      "bytes": 2664,
+      "sha256": "114255cef47743876105c2fe9ffbfbb74bcba50b4f063238bdcaa33aacadeb99"
     },
     {
       "path": "01-投稿填写内容.md",
-      "bytes": 2865,
-      "sha256": "30536e615081f3a974fde66b93450324922b4acea63154aa2f80e50d4ed7b3d9"
+      "bytes": 3114,
+      "sha256": "ba7d32652d5ce9ebd3878cef1e7de9d61e6f77b6471e7c328d91155c76b957da"
     },
     {
       "path": "02-启动与评审说明.md",
@@ -43,23 +45,23 @@
     },
     {
       "path": "04-提交前清单.md",
-      "bytes": 2151,
-      "sha256": "f061702defc584ed37d1bb1a1805514cf04239fa7676c8c2fe9bdef6b5698df8"
+      "bytes": 2458,
+      "sha256": "974cbd7a6ac3f8c55b494d046e6342fac35dbb3829d228103ac970e6cef49ac4"
     },
     {
       "path": "05-技术检查记录.md",
-      "bytes": 1738,
-      "sha256": "661c33be8ddac333e41c3d4a7db44b80feeba53d88dbc7935c38c95388b0c1f0"
+      "bytes": 1987,
+      "sha256": "809ff5a987f6f0db9d806eac6101207bd494142c576d85d723c1f6b14b4c62ba"
     },
     {
       "path": "06-在线体验与投稿链接.md",
-      "bytes": 1758,
-      "sha256": "d958be5fe07eb38076db94ee14ebb4326b5554bd9cd14d5cc7f45f6f8981af70"
+      "bytes": 2013,
+      "sha256": "d31024e46bc09eade3f899f8ccedbd288cffcaa6841068b91eb1c21547ca985b"
     },
     {
       "path": "07-QMuse导入进度.md",
-      "bytes": 2339,
-      "sha256": "744f683003793f1bfb5e775a39091eb60da88e6f6e0b256284b07c98bc5de56b"
+      "bytes": 2588,
+      "sha256": "17f000084c001a29be8aadf883789a677237279bc49cc6f55f7b338a371ae124"
     },
     {
       "path": "cover-1600x900.png",
@@ -93,5 +95,5 @@
     }
   ],
   "runtime_credentials_included": false,
-  "access_note": "QMuse public HTML version 90100084/prod and initial assets verified with anonymous HTTP. Owner reports browser AI candidates, manual confirmation and simulated exchange passed, and says submitted to the contest. Contest receipt/status is not independently verified; do not resubmit. Cloud APIs verified separately. submission_ready means demo/material readiness, not contest acceptance. Local ZIP is a separate loopback backup. Screenshots are older local/Cloudflare views, not current QMuse proof."
+  "access_note": "QMuse public HTML version 90100084/prod and initial assets verified with anonymous HTTP. Owner reports browser AI candidates, manual confirmation and simulated exchange passed, and reports the Alipay page displays submitted or under review. Exact label and work ID were not provided; receipt is not independently verified. Do not resubmit. Cloud APIs verified separately. submission_ready means demo/material readiness, not contest acceptance. Local ZIP is a separate loopback backup. Screenshots are older local/Cloudflare views, not current QMuse proof."
 }
