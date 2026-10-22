@@ -1,5 +1,7 @@
 # 免费托管投稿H5
 
+2026-10-22最新状态：现有 Cloudflare H5 可体验，但已被实际投稿表单拒绝。独立 QMuse 适配已先同步 GitHub `c705fbe`，43文件远端核对一致，官方CLI导入 **READY**，平台工程/内容审核/预览及发布产物检查通过。应用编辑入口 https://qmuse.cn/app/3379366579041450 ，尚未公开发布。本人报告四项表权限已设并已授权密钥；访客权限、实际模型和公开投稿链接仍待核验。 详见[本轮记录](../docs/reviews/2026-10-22-qmuse-import.md)。下文旧计划保留为历史。
+
 2026-10-21已发布：[打开邻里有伴](https://neighborhood-companion-demo.patch-neighborhood-demo.workers.dev/)。无需Cloudflare/ChatGPT账号或体验者自备密钥，DeepSeek在服务端配置；当前电脑Chrome、API、实际模型及示例往返已验收。手机流量/支付宝内置浏览器仍待本人检查。详见[线上投稿说明](../submission/06-在线体验与投稿链接.md)。
 
 本目录把已有本地虚构家庭演示适配为Cloudflare Workers静态资源 + Worker接口 + D1用量库。原`local-demo/`仍可独立运行，原Sites访问不变。没有真实家庭跨设备服务，不能据此声称目标老人看懂或孤独改善。

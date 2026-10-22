@@ -36,7 +36,7 @@ else:
     runpy.run_path(str(root/'local-demo/scripts/package.py'),run_name='__main__')
 app=json.loads(app_manifest.read_text(encoding='utf8'))
 shutil.copyfile(submission/app['archive'],dist/app['archive'])
-files=['README.md','01-投稿填写内容.md','02-启动与评审说明.md','03-三分钟演示脚本.md','04-提交前清单.md','05-技术检查记录.md','06-在线体验与投稿链接.md','cover-1600x900.png','cover.svg','preview.jpg','online-preview.jpg',app['archive'],app_manifest.name]
+files=['README.md','01-投稿填写内容.md','02-启动与评审说明.md','03-三分钟演示脚本.md','04-提交前清单.md','05-技术检查记录.md','06-在线体验与投稿链接.md','07-QMuse导入进度.md','cover-1600x900.png','cover.svg','preview.jpg','online-preview.jpg',app['archive'],app_manifest.name]
 secret_values=[os.environ[k].encode() for k in ('FAMILY_AI_API_KEY','DEEPSEEK_API_KEY') if os.environ.get(k)]
 rows=[]
 for name in files:
@@ -54,7 +54,7 @@ assert png[:8]==b'\x89PNG\r\n\x1a\n'
 assert int.from_bytes(png[16:20],'big')==1600 and int.from_bytes(png[20:24],'big')==900 and len(png)<5*1024*1024
 assert (submission/'preview.jpg').read_bytes()[:2]==b'\xff\xd8'
 assert (submission/'online-preview.jpg').read_bytes()[:2]==b'\xff\xd8'
-manifest={'reviewed_on':'2026-10-21','app_version':'online-H5-demo; bundled-local-v0.1','online_source_commit':'66d24b70defe70af0eaa891b5c41b2919756af71','runtime_source_commit':'14d574c41fe6f853f4a605b812158d1c1c11ffd0','public_url':'https://neighborhood-companion-demo.patch-neighborhood-demo.workers.dev/','app_files':len(app['files']),'app_archive_sha256':app['sha256'],'files':rows,'runtime_credentials_included':False,'access_note':'Online Chrome/API and real model cases verified. Phone cellular/Alipay browser and actual submission pending. Bundled ZIP remains the separate loopback runtime.'}
+manifest={'reviewed_on':'2026-10-22','app_version':'QMuse-import-READY; Cloudflare-online; bundled-local-v0.1','online_source_commit':'66d24b70defe70af0eaa891b5c41b2919756af71','qmuse_source_commit':'c705fbe7c7f16aaf91fc6e0aa0258d4c6b05aee0','qmuse_import_version':'90100047','qmuse_editor_url':'https://qmuse.cn/app/3379366579041450','qmuse_public_url':None,'qmuse_ai_verified':False,'public_url_submission_accepted':False,'runtime_source_commit':'14d574c41fe6f853f4a605b812158d1c1c11ffd0','public_url':'https://neighborhood-companion-demo.patch-neighborhood-demo.workers.dev/','app_files':len(app['files']),'app_archive_sha256':app['sha256'],'files':rows,'runtime_credentials_included':False,'access_note':'Cloudflare demo exists but submission field rejects its URL. QMuse import READY; owner reports table permissions set and authorizes the secret, but effective permissions, secret configuration, real cloud AI, public publishing and submission acceptance are pending. Bundled ZIP remains the separate loopback runtime.'}
 (submission/'manifest.json').write_text(json.dumps(manifest,ensure_ascii=False,indent=2)+'\n',encoding='utf8')
 files.append('manifest.json')
 kit=dist/'neighborhood-companion-submission-kit.zip'

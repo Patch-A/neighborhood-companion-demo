@@ -1,5 +1,7 @@
 # 项目开发约定
 
+- 2026-10-22：Cloudflare体验URL已被实际投稿表单拒绝，原因未知，不应继续称为可直接提交。`qmuse-demo/` 独立适配已通过检查并先同步GitHub c705fbe，官方CLI已导入READY（应用3379366579041450，版本90100047），本人报告四项表权限已设且已授权本应用密钥；访客权限生效、Secret配置、AI/公开发布/投稿字段待验收。保留既有版本；密钥进入此QMuse应用的本人授权本轮已取得，无需重复确认。当前记录见docs/reviews/2026-10-22-qmuse-import.md。
+
 - 2026-10-21独立免费H5已发布于 https://neighborhood-companion-demo.patch-neighborhood-demo.workers.dev/ ，运行源码66d24b7。Cloudflare终端授权已完成；Secret仅服务端，源配置默认AI关闭。线上模型、人工核对、虚构往返已验，手机流量/支付宝浏览器、真人效果和正式投稿未验。此前“待授权/未发布”属于历史状态。原Sites保持不变，不能拿当前H5验收替代其家庭AI验证。
 
 - 2026-10-20用户限定暂时免费部署，已自行注册Cloudflare。新增 `online-demo/` 作为独立投稿H5的Workers Free + D1 Free适配；只使用免费托管，不购买/升级套餐或域名。原Sites标识和访问不变。账号授权、实际发布URL、国内可达性和线上模型需分别核验；准备代码不等于已部署。DeepSeek仍按已有模型账户计费，用户密钥不随源码分发。

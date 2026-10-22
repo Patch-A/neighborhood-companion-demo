@@ -1,5 +1,7 @@
 # 邻里有伴当前交接
 
+2026-10-22最新状态：现有 Cloudflare H5 可体验，但已被实际投稿表单拒绝。独立 QMuse 适配已先同步 GitHub `c705fbe`，43文件远端核对一致，官方CLI导入 **READY**，平台工程/内容审核/预览及发布产物检查通过。应用编辑入口 https://qmuse.cn/app/3379366579041450 ，尚未公开发布。本人报告四项表权限已设并已授权密钥；访客权限、实际模型和公开投稿链接仍待核验。 详见[本轮记录](reviews/2026-10-22-qmuse-import.md)。下文旧计划保留为历史。
+
 ## 2026-10-21：免费H5已发布
 
 实际体验地址：https://neighborhood-companion-demo.patch-neighborhood-demo.workers.dev/ 。独立Workers Free + D1 Free，未升级套餐/买域名，原Sites访问不变。23文件准备提交8863328、外链导航修复1a1fec6、模型传输修复66d24b7分别先GitHub核对，再发布。当前运行源码66d24b70defe70af0eaa891b5c41b2919756af71，Worker版本7304db3e-5f05-4cec-93bd-1c0d8ba86626；公开版本预览关闭。账号/D1标识和密钥只留运行环境及忽略的本机配置。
