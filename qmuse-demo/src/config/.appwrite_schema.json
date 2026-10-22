@@ -1,0 +1,62 @@
+{
+  "databaseId": "qmuse-app-db",
+  "projectAlias": "default",
+  "tables": [
+    {
+      "tableId": "ai_quota_slots",
+      "name": "AI演示用量预留",
+      "columns": [
+        {
+          "key": "scope",
+          "type": "string",
+          "size": 128,
+          "required": true,
+          "comment": "日或分钟限额范围的摘要"
+        },
+        {
+          "key": "expiresAt",
+          "type": "integer",
+          "required": true,
+          "comment": "用于清理的到期毫秒"
+        }
+      ],
+      "indexes": [
+        {
+          "key": "idx_scope",
+          "type": "key",
+          "attributes": [
+            "scope"
+          ]
+        },
+        {
+          "key": "idx_expiry",
+          "type": "key",
+          "attributes": [
+            "expiresAt"
+          ]
+        }
+      ]
+    }
+  ],
+  "functions": [
+    {
+      "functionId": "card-suggestion",
+      "name": "图卡候选与演示限额",
+      "runtime": "node-22",
+      "entrypoint": "src/main.mjs",
+      "commands": "npm install --omit=dev",
+      "timeout": 30,
+      "enabled": true,
+      "execute": [
+        "any"
+      ],
+      "scopes": [
+        "databases.read",
+        "databases.write",
+        "rows.read",
+        "rows.write"
+      ],
+      "path": "functions/card-suggestion"
+    }
+  ]
+}

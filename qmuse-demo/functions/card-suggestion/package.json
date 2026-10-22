@@ -1,0 +1,9 @@
+{
+  "name": "card-suggestion",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "src/main.mjs",
+  "dependencies": {
+    "node-appwrite": "^23.0.0"
+  }
+}
