@@ -2,11 +2,14 @@
   "reviewed_on": "2026-10-22",
   "app_version": "QMuse-import-READY; Cloudflare-online; bundled-local-v0.1",
   "online_source_commit": "66d24b70defe70af0eaa891b5c41b2919756af71",
-  "qmuse_source_commit": "8304740f13334199440e5381000a0aed141e43ac",
-  "qmuse_import_version": "90100065",
+  "qmuse_source_commit": "6ad18222d5b152eb4a6a1979493e4323bd34e052",
+  "qmuse_import_version": "90100084",
   "qmuse_editor_url": "https://qmuse.cn/app/3379366579041450",
   "qmuse_public_url": null,
-  "qmuse_ai_verified": false,
+  "qmuse_ai_verified": true,
+  "qmuse_browser_ai_verified": false,
+  "qmuse_cloud_mode": "SINGLE_ENV",
+  "submission_ready": false,
   "public_url_submission_accepted": false,
   "runtime_source_commit": "14d574c41fe6f853f4a605b812158d1c1c11ffd0",
   "public_url": "https://neighborhood-companion-demo.patch-neighborhood-demo.workers.dev/",
@@ -15,18 +18,18 @@
   "files": [
     {
       "path": "README.md",
-      "bytes": 2556,
-      "sha256": "14f0398821fde00165e47638b4fee9b6d4bced764741cc4c7b12050896fcd4ca"
+      "bytes": 3037,
+      "sha256": "366cdf99b0ec7bd0d93938d68e3b264bbfff56278506fe4b728dcbf88d46b506"
     },
     {
       "path": "01-投稿填写内容.md",
-      "bytes": 5383,
-      "sha256": "3e88804f2f4c25002e1e542ccc389d081a24ae87c97c322affdc7d38760b292e"
+      "bytes": 5906,
+      "sha256": "1c207147b54a6180679396bf0425a8b2a8aff0137f2ca9ca3f377ab2797eafaa"
     },
     {
       "path": "02-启动与评审说明.md",
-      "bytes": 3494,
-      "sha256": "d8be93ab5ed83f00a7059422844eba214e70bef7c1caf7b07d0d0c524fc33faa"
+      "bytes": 3975,
+      "sha256": "afee7df1094066bd5e6124e24fcf3c93fa6b9f630b05f01a9cfc486e2bd1cd86"
     },
     {
       "path": "03-三分钟演示脚本.md",
@@ -35,23 +38,23 @@
     },
     {
       "path": "04-提交前清单.md",
-      "bytes": 1938,
-      "sha256": "6d39a2b9e16504d484888b32985d43e093e37c7a2941acf9eebebc7a4f0c4d98"
+      "bytes": 2419,
+      "sha256": "9867b8e068dc964f1955483b49c7d20131fad0b9c53f2a9ceb19a007c9a61a85"
     },
     {
       "path": "05-技术检查记录.md",
-      "bytes": 4739,
-      "sha256": "466bd82c795f9d52bfbbaa243726d0ee2f4a6f6189c8cd7ff0fe4c9f9049109b"
+      "bytes": 5220,
+      "sha256": "409433e64e7030dcb79236b08053a3d1573a20e9197f841e26f3363acb8862e5"
     },
     {
       "path": "06-在线体验与投稿链接.md",
-      "bytes": 2785,
-      "sha256": "5775f359e16b39e7006bc1476e4db654981f5469c9c1747d8300279b88f0089a"
+      "bytes": 3266,
+      "sha256": "84a4f6c1f2dba3f27a95570d1eba311fc6008660507df47d626951fc4113a0c1"
     },
     {
       "path": "07-QMuse导入进度.md",
-      "bytes": 5731,
-      "sha256": "325bed615928e863b49c4b7d2f3e556c8f7f3719db52c31b3069cfb2ea5bf97d"
+      "bytes": 8436,
+      "sha256": "4b94ab3f2125b3f16b16935f042c41e65bc7ac88a0de4596157624c0014550aa"
     },
     {
       "path": "cover-1600x900.png",
@@ -85,5 +88,5 @@
     }
   ],
   "runtime_credentials_included": false,
-  "access_note": "Cloudflare demo exists but submission field rejects its URL. QMuse diagnostics update READY; initial preview rendered but cloud status failed. Table settings are visible in owner screenshot; effective permissions, connection diagnosis, secret configuration, real cloud AI, public publishing and submission acceptance are pending. Bundled ZIP remains the separate loopback runtime."
+  "access_note": "Cloudflare demo exists but submission field rejects its URL. QMuse actual isolated cloud API permissions, private model, photo/fallback and concurrent quota verified. Owner reports preview connection notice cleared. Public URL, real browser AI/human confirmation and submission acceptance remain pending. Bundled ZIP remains the separate loopback runtime."
 }
